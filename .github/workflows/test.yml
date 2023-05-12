@@ -1,18 +1,18 @@
 name: build-test
 
-on: [pull_request]
+on: [pull_request]  # desencadenador
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    strategy:
+    runs-on: ubuntu-latest  # equipo remoto
+    strategy: # especificar version de node
       matrix:
         node: ['16']
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup Node 16
-        uses: actions/setup-node@v2
+    steps:  # paso a paso una vez este listo el equipo
+      - uses: actions/checkout@v2 # copiar repositorio
+      - name: Setup Node 16 
+        uses: actions/setup-node@v2 # establecer el uso de node 16
         with:
           node-version: 16.x
-      - run: npm install
-      - run: npm run lint
+      - run: npm install  # instalar las librerias
+      - run: npm run lint # ejecutar pruebas de eslint
